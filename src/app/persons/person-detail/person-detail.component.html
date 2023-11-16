@@ -1,0 +1,112 @@
+<div class="main">
+  <div class="title-elt">
+    <span class="title-text">les informations personnelles</span>
+  </div>
+<!--   <button mat-raised-button color="primary" class="button" *ngIf="canEdit">
+    Edit
+  </button> -->
+  <form class="example-form" [formGroup]="personDetailForm">
+    <div class="names-row">
+      <mat-form-field class="example-full-width">
+        <mat-label>prénom</mat-label>
+        <input
+          class="input-elt"
+          matInput
+          type="text"
+          formControlName="firstname"
+          placeholder="entrer le prénom"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Nom</mat-label>
+        <input
+          class="input-elt"
+          matInput
+          type="text"
+          formControlName="lastname"
+          placeholder="Entrer le nom"
+        />
+      </mat-form-field>
+    </div>
+    <mat-form-field class="example-full-width">
+      <mat-label>Date de naissance</mat-label>
+      <input
+        class="input-elt"
+        matInput
+        type="date"
+        formControlName="birthdate"
+        placeholder="Entrer la date de naissance"
+      />
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>ID de la famille</mat-label>
+      <input
+        class="input-elt"
+        matInput
+        type="number"
+        formControlName="familly_id"
+        placeholder="Entrer l'ID de la famille"
+      />
+    </mat-form-field>
+
+    <div class="parents">
+      <mat-form-field class="example-full-width">
+        <mat-label>ID du pére</mat-label>
+        <input
+          class="input-elt"
+          matInput
+          type="number"
+          formControlName="father_id"
+          placeholder="Entrer l'ID du pére"
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>ID de la mére</mat-label>
+        <input
+          class="input-elt"
+          matInput
+          type="number"
+          formControlName="mother_id"
+          placeholder="Entrer l'ID de la mére"
+        />
+      </mat-form-field>
+    </div>
+    <mat-form-field class="example-full-width">
+      <mat-label class="label-elt">Genre</mat-label>
+      <input
+        class="input-elt"
+        matInput
+        type="text"
+        formControlName="genre"
+        placeholder="genre de la personne"
+      />
+    </mat-form-field>
+  </form>
+  <div class="title-elt">
+    <span class="title-text">Evenements</span>
+  </div>
+  <p *ngIf="noEvents">
+    cette personne n'as pas encore d'événements enregistrés
+  </p>
+
+  <app-events-view
+    (eventDeleted)="handleEventDeletion($event)"
+    (formSubmitted)="handleFormSubmission($event)"
+    [events]="events"
+    [canEdit]="canEdit"
+  ></app-events-view>
+
+  <div class="title-elt">
+    <span class="title-text">relations</span>
+  </div>
+  <p *ngIf="noRelations">
+    cette personne n'as pas encore de relations enregistrées
+  </p>
+  <app-relations-view 
+  (relationDeleted)="handleRelationDeletion($event)"
+  (formSubmitted)="handleFormSubmission($event)"
+  [relations]="relations"
+  [canEdit]="canEdit">
+  </app-relations-view>
+</div>

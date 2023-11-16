@@ -1,0 +1,9 @@
+.new-relation {
+  display: flex;
+  width: 867px;
+  height: 95px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  background: #e4f7fb !important;
+}

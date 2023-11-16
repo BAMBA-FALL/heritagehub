@@ -1,0 +1,48 @@
+<div class="login-page-container">
+  <div class="image-container">
+    <div class="image">
+      <img src="assets/image.png" alt="banner" />
+    </div>
+  </div>
+  <div class="login-form-container">
+    <img src="assets/logo.svg" alt="logo" class="logo" />
+    <form class="example-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <h1 class="connectez-vous">Connectez vous</h1>
+      <p class="error-msg" *ngIf="formError">Email ou mot de passe incorrect</p>
+      <mat-form-field class="example-full-width">
+        <mat-label>Username</mat-label>
+        <input
+          matInput
+          type="text"
+          formControlName="username"
+          placeholder="Enter your username"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          type="password"
+          formControlName="password"
+          placeholder="enter your password"
+        />
+      </mat-form-field>
+      <a
+        [routerLink]="['/register']"
+        routerLinkActive="active-link"
+        class="create-acc"
+        >Vous avez pas encore de compte ?</a
+      >
+      <button
+        mat-raised-button
+        color="primary"
+        class="button"
+        type="submit"
+        [disabled]="loginForm.invalid"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
